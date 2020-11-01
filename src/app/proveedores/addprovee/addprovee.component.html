@@ -23,14 +23,18 @@
             <div class="form-group"><label for="email">Correo Electrónico</label>
                 <i class="fa fa-check-circle check" *ngIf="email.valid"></i>
                 <i class="fa fa-exclamation-circle uncheck" *ngIf="email.invalid && email.touched">
-                </i><input type="text" class="form-control" id="email" ngModel name="email" required email #email="ngModel">
+                </i><input type="text" class="form-control" id="email" ngModel name="email" required email
+                    #email="ngModel">
                 <p class="alert alert-danger" *ngIf="email.invalid && email.touched">Por favor introduzca una dirección
                     de correo correcta.</p>
             </div>
 
             <div class="form-group"><label for="contacto">Persona de contacto</label>
-                <input type="text" class="form-control" id="contacto"></div><button type="submit"
-                class="btn btn-success">Añadir Proveedor</button>
+                <input type="text" class="form-control" id="contacto"></div>
+            <button type="submit" class="btn btn-success" [disabled]="!formpro.valid">Añadir Proveedor</button>
+            <p class="alert alert-danger " *ngIf="!formpro.valid">
+                Por favor complete todos los campos
+            </p>
             <hr>
             <pre> Estado Dirty: {{ formpro.controls.email.dirty }}</pre>
             <pre> Estado Pristine: {{ formpro.controls.email.pristine }}</pre>

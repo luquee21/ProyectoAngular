@@ -8,6 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AddproveeComponent } from './proveedores/addprovee/addprovee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProveedoresComponent } from './proveedores/proveedores/proveedores.component';
+import { AddpresComponent } from './presupuestos/addpres/addpres.component';
+import { PresupuestosService } from './servicios/presupuestos.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -16,14 +19,17 @@ import { ProveedoresComponent } from './proveedores/proveedores/proveedores.comp
     InicioComponent,
     ProveedoresComponent,
     HeaderComponent,
-    AddproveeComponent
+    AddproveeComponent,
+    AddpresComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [ProveedoresService],
+  providers: [ProveedoresService, PresupuestosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
