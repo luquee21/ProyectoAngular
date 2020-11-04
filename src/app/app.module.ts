@@ -11,6 +11,8 @@ import { ProveedoresComponent } from './proveedores/proveedores/proveedores.comp
 import { AddpresComponent } from './presupuestos/addpres/addpres.component';
 import { PresupuestosService } from './servicios/presupuestos.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.component';
+import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     ProveedoresComponent,
     HeaderComponent,
     AddproveeComponent,
-    AddpresComponent
+    AddpresComponent,
+    PresupuestosComponent,
+    EditpresComponent
   ],
   imports: [
     BrowserModule,
