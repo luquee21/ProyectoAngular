@@ -1,3 +1,4 @@
+
 <h3>Listado de Presupuestos</h3>
 <a class="btn btn-primary float-md-right" routerLink="/addpres">Añadir
 nuevo presupuesto</a>
@@ -11,13 +12,11 @@ nuevo presupuesto</a>
 <th>Concepto</th>
 <th>Base</th>
 <th>IVA</th>
-<th>Total</th>
 <th class="text-right">Total</th>
 <th>Editar</th>
 </tr>
 </thead>
-</tr>
-</thead>
+
 <tbody>
 <tr *ngFor="let presupuesto of presupuestos">
 <td>{{ presupuesto.proveedor }}</td>
