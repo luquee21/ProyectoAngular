@@ -17,10 +17,9 @@ export class PresupuestosService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post(this.presURL, newpres, {headers})
+    return this.http.post(this.presURL, newpres, { headers })
       .map(res => {
         console.log(res);
-        
         return res;
       })
   }
@@ -39,14 +38,20 @@ export class PresupuestosService {
     const newpre = JSON.stringify(presupuesto);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
-    });
+    })
 
     const url = `${this.preURL}/${id$}.json`;
-    return this.http.put(url, newpre,{headers})
+    return this.http.put(url, newpre, { headers })
       .map(res => {
         console.log(res);
         return res;
       })
   }
 
+  delPresupuesto(id$: string) {
+    const url = `${this.preURL}/${id$}.json`;
+     return this.http.delete(url).map(res => res);
+
+  }
+  
 }

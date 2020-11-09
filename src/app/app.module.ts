@@ -13,6 +13,9 @@ import { PresupuestosService } from './servicios/presupuestos.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.component';
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
+import { RegistroComponent } from './autenticacion/registro/registro.component';
+import { AutenticacionService } from './servicios/autenticacion.service';
+import { InisesComponent } from './autenticacion/inises/inises.component';
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { EditpresComponent } from './presupuestos/editpres/editpres.component';
     AddproveeComponent,
     AddpresComponent,
     PresupuestosComponent,
-    EditpresComponent
+    EditpresComponent,
+    RegistroComponent,
+    InisesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,7 @@ import { EditpresComponent } from './presupuestos/editpres/editpres.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProveedoresService, PresupuestosService],
+  providers: [ProveedoresService, PresupuestosService, AutenticacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

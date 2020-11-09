@@ -7,7 +7,7 @@ import { PresupuestosService } from 'src/app/servicios/presupuestos.service';
   styleUrls: ['./presupuestos.component.css']
 })
 export class PresupuestosComponent implements OnInit {
-  presupuestos:any[] = [];
+  presupuestos: any[] = [];
 
   constructor(private presupuestosService: PresupuestosService) {
     this.presupuestosService.getPresupuestos()
@@ -23,4 +23,12 @@ export class PresupuestosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  eliminarPresupuesto(id$) {
+    this.presupuestosService.delPresupuesto(id$).subscribe(res => {
+      this.presupuestos = [];
+      this.presupuestosService.getPresupuestos().subscribe(presupuestos => {
+        for (const id$ in presupuestos) { const p = presupuestos[id$]; p.id$ = id$; this.presupuestos.push(presupuestos[id$]); }
+      })
+    });
+  }
 }
