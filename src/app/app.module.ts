@@ -16,6 +16,7 @@ import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { InisesComponent } from './autenticacion/inises/inises.component';
+import { GuardService } from './servicios/guard.service';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { InisesComponent } from './autenticacion/inises/inises.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ProveedoresService, PresupuestosService, AutenticacionService],
+  providers: [ProveedoresService, PresupuestosService, AutenticacionService, GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

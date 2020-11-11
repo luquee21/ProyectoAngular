@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/Rx';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,21 +17,21 @@ export class PresupuestosService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post(this.presURL, newpres, { headers })
-      .map(res => {
+    return this.http.post(this.presURL, newpres, { headers }).pipe
+      (map(res => {
         console.log(res);
         return res;
-      })
+      }));
   }
 
   getPresupuestos() {
-    return this.http.get(this.presURL).map(res => res);
+    return this.http.get(this.presURL).pipe(map(res => res));
   }
 
   getPresupuesto(id$: string) {
     const url = `${this.preURL}/${id$}.json`;
     return this.http.get(url)
-      .map(res => res);
+      .pipe(map(res => res));
   }
 
   putPresupuesto(presupuesto: any, id$: string) {
@@ -42,15 +42,15 @@ export class PresupuestosService {
 
     const url = `${this.preURL}/${id$}.json`;
     return this.http.put(url, newpre, { headers })
-      .map(res => {
+      .pipe(map(res => {
         console.log(res);
         return res;
-      })
+      }));
   }
 
   delPresupuesto(id$: string) {
     const url = `${this.preURL}/${id$}.json`;
-     return this.http.delete(url).map(res => res);
+     return this.http.delete(url).pipe(map(res => res));
 
   }
   
