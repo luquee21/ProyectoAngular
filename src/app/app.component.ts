@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 export class AppComponent implements OnInit{
   title = 'appCompras';
 
-
+  
   ngOnInit(){
     firebase.default.initializeApp({
       apiKey: "AIzaSyD_AjK7nH5xWAEc_DDtS-RSw4BGyyWIdHw",
@@ -21,5 +21,7 @@ export class AppComponent implements OnInit{
       appId: "1:1096056903066:web:8ef89ea7054079c74c1623",
       measurementId: "G-DTSE6DFCZC"  
     });
+
+    
   }
 }

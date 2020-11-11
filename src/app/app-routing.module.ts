@@ -7,6 +7,7 @@ import { AddpresComponent } from './presupuestos/addpres/addpres.component';
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.component';
 import { AddproveeComponent } from './proveedores/addprovee/addprovee.component';
+import { EditproveeComponent } from './proveedores/editprovee/editprovee.component';
 import { ProveedoresComponent } from './proveedores/proveedores/proveedores.component';
 import { GuardService } from './servicios/guard.service';
 
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   { path: 'addpres', component: AddpresComponent, canActivate: [GuardService]},
   { path: 'presupuestos', component: PresupuestosComponent, canActivate: [GuardService]},
   { path: 'editpres/:id', component: EditpresComponent, canActivate: [GuardService]},
+  { path: 'editprovee/:id', component: EditproveeComponent, canActivate: [GuardService]},
   { path: 'registro', component: RegistroComponent },
   { path: 'iniciosesion', component: InisesComponent },
   { path: '**', component: InicioComponent}

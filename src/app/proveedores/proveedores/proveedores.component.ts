@@ -10,10 +10,27 @@ export class ProveedoresComponent implements OnInit {
   mensaje:string;
   proveedores: any;
 
-  constructor(private proveedoresService:ProveedoresService) { }
 
-  ngOnInit(): void {
-    this.proveedores = this.proveedoresService.getProveedores();
+  constructor(private presupuestosService: ProveedoresService) {
+    this.presupuestosService.getProveedores()
+    .subscribe(presupuestos => {
+        for (const id$ in presupuestos) {
+          const p = presupuestos[id$];
+          p.id$ = id$;
+          this.proveedores.push(presupuestos[id$]);
+        }
+      })
   }
 
+  ngOnInit(): void {
+  }
+
+  eliminarPresupuesto(id$) {
+    this.presupuestosService.delProveedor(id$).subscribe(res => {
+      this.proveedores = [];
+      this.presupuestosService.getProveedores().subscribe(presupuestos => {
+        for (const id$ in presupuestos) { const p = presupuestos[id$]; p.id$ = id$; this.proveedores.push(presupuestos[id$]); }
+      })
+    });
+  }
 }

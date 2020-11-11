@@ -17,6 +17,8 @@ import { RegistroComponent } from './autenticacion/registro/registro.component';
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { InisesComponent } from './autenticacion/inises/inises.component';
 import { GuardService } from './servicios/guard.service';
+import { EditproveeComponent } from './proveedores/editprovee/editprovee.component';
+
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { GuardService } from './servicios/guard.service';
     PresupuestosComponent,
     EditpresComponent,
     RegistroComponent,
-    InisesComponent
+    InisesComponent,
+    EditproveeComponent
   ],
   imports: [
     BrowserModule,
