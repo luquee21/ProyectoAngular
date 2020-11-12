@@ -16,10 +16,14 @@ export class AutenticacionService {
 
   inicioSesion(userdata) {
     firebase.default.auth().signInWithEmailAndPassword(userdata.email, userdata.password).then(response => {
-      console.log(response); this.router.navigate(['/inicio']);
+      console.log(response); 
+      this.router.navigate(['/inicio']);
     }).catch(error => { console.log(error); });
 
   }
-  isAuthenticated() { const user = firebase.default.auth().currentUser; if (user) { return true; } else { return false; } }
+  isAuthenticated() {
+    const user = firebase.default.auth().currentUser;
+    if (user) { return true; } else { return false; }
+  }
   logout() { firebase.default.auth().signOut(); }
 }

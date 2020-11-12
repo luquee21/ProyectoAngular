@@ -37,8 +37,8 @@ export class EditpresComponent implements OnInit {
       tipo: ['', Validators.required],
       iva: this.iva, total: this.total
     }); this.onChanges();
-  } 
-  
+  }
+
   onChanges(): void {
     this.presupuestoForm.valueChanges.subscribe(valor => {
       this.base = valor.base;
@@ -50,5 +50,6 @@ export class EditpresComponent implements OnInit {
   onSubmit() {
     this.presupuesto = this.savePresupuesto();
     this.presupuestoService.putPresupuesto(this.presupuesto, this.id).subscribe(newpre => { this.router.navigate(['/presupuestos']) })
-  } savePresupuesto() { const savePresupuesto = { proveedor: this.presupuestoForm.get('proveedor').value, fecha: this.presupuestoForm.get('fecha').value, concepto: this.presupuestoForm.get('concepto').value, base: this.presupuestoForm.get('base').value, tipo: this.presupuestoForm.get('tipo').value, iva: this.presupuestoForm.get('iva').value, total: this.presupuestoForm.get('total').value }; return savePresupuesto; }
+  }
+  savePresupuesto() { const savePresupuesto = { proveedor: this.presupuestoForm.get('proveedor').value, fecha: this.presupuestoForm.get('fecha').value, concepto: this.presupuestoForm.get('concepto').value, base: this.presupuestoForm.get('base').value, tipo: this.presupuestoForm.get('tipo').value, iva: this.presupuestoForm.get('iva').value, total: this.presupuestoForm.get('total').value }; return savePresupuesto; }
 }

@@ -8,6 +8,7 @@ import { PresupuestosService } from 'src/app/servicios/presupuestos.service';
 })
 export class PresupuestosComponent implements OnInit {
   presupuestos: any[] = [];
+  charged : boolean = false;
 
   constructor(private presupuestosService: PresupuestosService) {
     this.presupuestosService.getPresupuestos()
@@ -17,6 +18,9 @@ export class PresupuestosComponent implements OnInit {
           p.id$ = id$;
           this.presupuestos.push(presupuestos[id$]);
         }
+        setTimeout(()=>{
+          this.charged = true;
+        },1500);
       })
   }
 

@@ -11,8 +11,8 @@ export class ProveedoresService {
   preURL = 'https://comprasapp-9fc31.firebaseio.com/proveedores';
 
   constructor(private http: HttpClient) { }
-  postProveedores(presupuesto: any) {
-    const newpres = JSON.stringify(presupuesto);
+  postProveedores(proveedor: any) {
+    const newpres = JSON.stringify(proveedor);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
@@ -34,8 +34,8 @@ export class ProveedoresService {
       .pipe(map(res => res));
   }
 
-  putProveedor(presupuesto: any, id$: string) {
-    const newpre = JSON.stringify(presupuesto);
+  putProveedor(proveedor: any, id$: string) {
+    const newpre = JSON.stringify(proveedor);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     })

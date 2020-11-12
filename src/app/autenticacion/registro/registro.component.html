@@ -9,7 +9,7 @@
             <label>Contraseña</label><input type="password" id="inputPassword" class="form-control"
                 formControlName="password" required>
             <p class="alert alert-danger" *ngIf="erroresForm.password">{{ erroresForm.password }}</p>
-            <hr><button type="submit" class="btn btn-primary" [disabled]="!registroForm.valid">Registrar</button>
+            <hr><button type="submit" class="btn btn-primary" [disabled]="!registroForm.valid || clicked">Registrar</button>
         </form>
-        <p>Si yadispone de cuenta pulse <a routerLink="/iniciosesion">aquí</a></p></div>
+        <p>Si ya dispone de cuenta pulse <a routerLink="/iniciosesion">aquí</a></p></div>
     </div>

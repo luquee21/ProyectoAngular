@@ -12,6 +12,9 @@ export class InisesComponent implements OnInit {
   mensaje = false;
   loginForm: FormGroup;
   userdata: any;
+  loading: boolean = false;
+  clicked: boolean = false;
+
   constructor(private formBuilder: FormBuilder,
     private autService: AutenticacionService,
     private router: Router,
@@ -24,9 +27,32 @@ export class InisesComponent implements OnInit {
     });
   }
 
-  onSubmit() { this.userdata = this.saveUserdata(); this.autService.inicioSesion(this.userdata); setTimeout(() => { if (this.isAuth() === false) { this.mensaje = true } }, 2000); }
+  onSubmit() {
+    this.clicked = true;
+    this.userdata = this.saveUserdata();
+    this.loading=true;
+    this.mensaje = false;
+    setTimeout(() => {
+      this.autService.inicioSesion(this.userdata);
+      this.loading = false;
+    }, 3000);
 
-  saveUserdata() { const saveUserdata = { email: this.loginForm.get('email').value, password: this.loginForm.get('password').value, }; return saveUserdata; }
+    setTimeout(() => {
+      if (this.isAuth() === false) { 
+        this.mensaje = true 
+        this.loading = false;
+        this.clicked = false;
+      }
+    }, 4000);
+  }
+
+  saveUserdata() {
+    const saveUserdata = {
+      email: this.loginForm.get('email').value,
+      password: this.loginForm.get('password').value,
+    };
+    return saveUserdata;
+  }
 
   isAuth() { return this.autService.isAuthenticated(); }
 }

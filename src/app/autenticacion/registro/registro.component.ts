@@ -11,6 +11,8 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 export class RegistroComponent implements OnInit {
   registroForm: FormGroup;
   userdata: any;
+  clicked: boolean = false;
+
   erroresForm = { 'email': '', 'password': '' }
   mensajesValidacion = {
     'email':
@@ -51,6 +53,7 @@ export class RegistroComponent implements OnInit {
     
   }
   onSubmit() {
+    this.clicked = true;
     this.userdata = this.saveUserdata();
     this.autService.registroUsuario(this.userdata);
     this.router.navigate(['/inicio'])

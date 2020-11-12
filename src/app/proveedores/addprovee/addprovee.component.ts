@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ProveedoresService } from 'src/app/servicios/proveedores.service';
 
 @Component({
@@ -8,38 +8,49 @@ import { ProveedoresService } from 'src/app/servicios/proveedores.service';
   styleUrls: ['./addprovee.component.css']
 })
 export class AddproveeComponent implements OnInit {
-  @ViewChild('formpro') formpro: NgForm;
+  proveedorForm: FormGroup;
   proveedor: any;
-
   provincias: string[] = ['Álava', 'Albacete', 'Alicante', 'Almería', 'Asturias', 'Ávila', 'Badajoz', 'Barcelona', 'Burgos', 'Cáceres', 'Cádiz', 'Cantabria', 'Castellón', 'Ciudad Real', 'Córdoba', 'La Coruña', 'Cuenca', 'Gerona', 'Granada', 'Guadalajara', 'Guipúzcoa', 'Huelva', 'Huesca', 'IslasBaleares', 'Jaén', 'León', 'Lérida', 'Lugo', 'Madrid', 'Málaga', 'Murcia', 'Navarra', 'Orense', 'Palencia', 'Las Palmas', 'Pontevedra', 'La Rioja', 'Salamanca', 'Segovia', 'Sevilla', 'Soria', 'Tarragona', 'Santa Cruz de Tenerife', 'Teruel', 'Toledo', 'Valencia', 'Valladolid', 'Vizcaya', 'Zamora', 'Zaragoza'];
-  constructor(private presupuestoService: ProveedoresService) {
-    this.proveedor = {
-      nombre: '', cif: '', direccion: '', cp: '', localidad: '', provincia: '', telefono: null, email: '', contacto: ''
-    }
-  }
   
+  constructor(private pf: FormBuilder, private presupuestoService: ProveedoresService) {
+   
+  }
+
+  ngOnInit(): void {
+    this.proveedorForm = this.pf.group({
+      nombre: ['', Validators.required],
+      cif: ['', Validators.required],
+      direccion: ['', Validators.required],
+      cp: ['', Validators.required],
+      localidad: ['', Validators.required],
+      provincia: ['', Validators.required],
+      telefono: ['', Validators.required],
+      email: ['', Validators.required],
+      contacto: ['', Validators.required]
+    });
+  }
+
   onSubmit() {
     this.proveedor = this.saveProveedor();
     this.presupuestoService.postProveedores( this.proveedor )
     .subscribe(newpres => {
     })
-    this.formpro.reset();
+    this.proveedorForm.reset();
     }
-    
-  ngOnInit(): void {
-  }
+
   saveProveedor() {
     const saveProveedor = {
-      nombre: this.proveedor.get('nombre').value,
-      cif: this.proveedor.get('cif').value,
-      direccion: this.proveedor.get('direccion').value,
-      cp: this.proveedor.get('cp').value,
-      localidad: this.proveedor.get('localidad').value,
-      provincia: this.proveedor.get('provincia').value,
-      tlf: this.proveedor.get('telefono').value,
-      email: this.proveedor.get('email').value,
-      contacto: this.proveedor.get('contacto').value
+      nombre: this.proveedorForm.get('nombre').value,
+      cif: this.proveedorForm.get('cif').value,
+      direccion: this.proveedorForm.get('direccion').value,
+      cp: this.proveedorForm.get('cp').value,
+      localidad: this.proveedorForm.get('localidad').value,
+      provincia: this.proveedorForm.get('provincia').value,
+      telefono: this.proveedorForm.get('telefono').value,
+      email: this.proveedorForm.get('email').value,
+      contacto: this.proveedorForm.get('contacto').value
     };
     return saveProveedor;
   }
-}
+
+  }

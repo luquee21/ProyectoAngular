@@ -7,29 +7,34 @@ import { ProveedoresService } from 'src/app/servicios/proveedores.service';
   styleUrls: ['./proveedores.component.css']
 })
 export class ProveedoresComponent implements OnInit {
-  mensaje:string;
-  proveedores: any;
+  proveedores: any[] = [];
+  charged: boolean = false;
 
-
-  constructor(private presupuestosService: ProveedoresService) {
-    this.presupuestosService.getProveedores()
-    .subscribe(presupuestos => {
-        for (const id$ in presupuestos) {
-          const p = presupuestos[id$];
+  constructor(private proveedoresService: ProveedoresService) {
+    this.proveedoresService.getProveedores()
+    .subscribe(proveedores => {
+        for (const id$ in proveedores) {
+          const p = proveedores[id$];
           p.id$ = id$;
-          this.proveedores.push(presupuestos[id$]);
+          this.proveedores.push(proveedores[id$]);
         }
+        setTimeout(() => {
+          this.charged = true;
+        },1500);
+        
       })
   }
 
   ngOnInit(): void {
   }
 
-  eliminarPresupuesto(id$) {
-    this.presupuestosService.delProveedor(id$).subscribe(res => {
+  eliminarProveedor(id$) {
+    this.proveedoresService.delProveedor(id$).subscribe(res => {
       this.proveedores = [];
-      this.presupuestosService.getProveedores().subscribe(presupuestos => {
-        for (const id$ in presupuestos) { const p = presupuestos[id$]; p.id$ = id$; this.proveedores.push(presupuestos[id$]); }
+      this.proveedoresService.getProveedores().subscribe(presupuestos => {
+        for (const id$ in presupuestos) { 
+          const p = presupuestos[id$]; p.id$ = id$; 
+          this.proveedores.push(presupuestos[id$]); }
       })
     });
   }

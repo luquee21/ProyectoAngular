@@ -1,11 +1,21 @@
 <h3>Listado de Proveedores</h3>
-<a class="btn  btn-primary float-md-right" routerLink="/addprovee">Añadir nuevo proveedor</a><br>
+<div class="spinner-grow text-primary text-center" role="status" *ngIf="!charged" >
+    <span class="sr-only">Cargando....</span>
+</div>
+
+<div *ngIf="charged">
+<a class="btn btn-primary float-md-right" routerLink="/addprovee">Añadir nuevo proveedor</a><br>
 <table class="table table-bordered table-striped tabla" style="margin-top: 40px;">
     <thead>
         <tr class="filters">
             <th>Nombre</th>
+            <th>C.I.F</th>
+            <th>Dirección</th>
+            <th>Código Postal</th>
+            <th>Localidad</th>
+            <th>Provincia</th>
+            <th>Teléfono</th>
             <th>Correo Electrónico</th>
-            <th>Telefono</th>
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>
@@ -13,14 +23,21 @@
     <tbody>
         <tr *ngFor="let proveedor of proveedores">
             <td>{{ proveedor.nombre }}</td>
-            <td><a href="mailto:{{ proveedor.email}}">{{ proveedor.email }}</a></td>
+            <td>{{ proveedor.cif }}</td>
+            <td>{{ proveedor.direccion }}</td>
+            <td>{{ proveedor.cp }}</td>
+            <td>{{ proveedor.localidad }}</td>
+            <td>{{ proveedor.provincia }}</td>
             <td>{{ proveedor.telefono }}</td>
+            <td><a href="mailto:{{ proveedor.email}}">{{ proveedor.email }}</a></td>
+    
             <td>
-                <button type="button" class="btn btn-success" routerLink="/editprovee/{{presupuesto.id$}}">Editar</button>
+                <button type="button" class="btn btn-success" routerLink="/editprovee/{{proveedor.id$}}">Editar</button>
             </td>
 
-            <td><button class="btn btn-danger" (click)="eliminarPresupuesto(presupuesto.id$)">Eliminar</button>
+            <td><button class="btn btn-danger" (click)="eliminarProveedor(proveedor.id$)">Eliminar</button>
             </td>
         </tr>
     </tbody>
 </table>
+</div>

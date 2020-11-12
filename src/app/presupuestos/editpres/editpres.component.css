@@ -1,19 +1,28 @@
 input.ng-invalid.ng-touched {
     border-left: 5px solid #a94442;
-    }
-    input.ng-valid.ng-dirty {
+}
+
+input.ng-valid.ng-dirty {
     border-left: 5px solid #42A948;
-    }
-    www.fullengineeringbook.net
-    select.ng-invalid.ng-touched {
+}
+
+select.ng-invalid.ng-touched {
     border-left: 5px solid #a94442;
-    }
-    select.ng-valid.ng-dirty {
+}
+
+select.ng-valid.ng-dirty {
     border-left: 5px solid #42A948;
-    }
-    .check {
+}
+
+.check {
     color: #42A948;
-    }
-    .uncheck {
+}
+
+.uncheck {
     color: #a94442;
-    }
+}
+
+.btn {
+    margin-top: 5px;
+    margin-right: 20px;
+}

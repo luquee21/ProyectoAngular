@@ -39,11 +39,11 @@ export class AddpresComponent implements OnInit {
   }
   onSubmit() {
     this.presupuesto = this.savePresupuesto();
-    this.presupuestoService.postPresupuesto( this.presupuesto )
-    .subscribe(newpres => {
-    })
+    this.presupuestoService.postPresupuesto(this.presupuesto)
+      .subscribe(newpres => {
+      });
     this.presupuestoForm.reset();
-    }
+  }
   savePresupuesto() {
     const savePresupuesto = {
       proveedor: this.presupuestoForm.get('proveedor').value,
