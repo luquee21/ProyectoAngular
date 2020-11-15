@@ -1,6 +1,9 @@
 <h3>Listado de Proveedores</h3>
-<div class="spinner-grow text-primary text-center" role="status" *ngIf="!charged" >
-    <span class="sr-only">Cargando....</span>
+
+<div class ="d-flex justify-content-center" *ngIf="!charged"> 
+    <div class="spinner-grow text-primary" role="status" >
+        <span class="sr-only">Cargando....</span>
+    </div>
 </div>
 
 <div *ngIf="charged">
